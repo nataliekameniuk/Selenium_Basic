@@ -52,24 +52,40 @@ public class Sample3Task {
 //         check that it is True that value of second button is
 //         "this is Also a Button" if you ignore Caps Locks
 //         fail with custom error message:
+        try{
         String elementTextOnPage = driver.findElement(By.cssSelector("#buttonId")).getAttribute("value");
-        assertTrue(elementTextOnPage.equalsIgnoreCase("this is Also a Button"));
+        assertTrue(elementTextOnPage.equalsIgnoreCase("this is Also a Button"));}
+        catch (AssertionError e) {
+            System.err.println("this is a custom error message”");
+            e.printStackTrace();
+        }
         // pass:
-        assertTrue("all good", true);
+    //    assertTrue(true);
         // fail:
-       assertFalse("error message", false);
+   //    assertFalse(false);
+
     }
 
     @Test
     public void assertFalseTask() throws Exception {
 //         TODO:
 //        check that it is False that value of second button is "This is a button"
-    }
+        String elementTextOnPage = driver.findElement(By.cssSelector("#buttonId")).getAttribute("value");
+        assertFalse(elementTextOnPage.equals("This is a button"));}
+
 
     @Test
     public void failTask() throws Exception {
 //        TODO:
 //        check that none of items with class "test"
 //        contain number 190
+    //    List<WebElement> allElementsWithClass = driver.findElements(By.className("test"));
+    //    for (WebElement elementWithClass : allElementsWithClass){
+        String a = "Test Text 1";
+     //   assertTrue(a.equals(allElementsWithClass));}
+        List<WebElement> allElementsWithClass = driver.findElements(By.className("test"));
+        for (WebElement elementWithClass : allElementsWithClass) {
+     //      System.out.println(elementWithClass.getText());
+       assertTrue(driver.findElements(By.className("test")).contains(a));
     }
-}
+}}
