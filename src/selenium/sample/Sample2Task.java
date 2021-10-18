@@ -53,7 +53,7 @@ public class Sample2Task {
 //         TODO:
 //         get first text of class "test" (should be "Test Text 1")
         System.out.println(driver.findElements(By.className("test")).get(0).getText());
-        
+
     }
 
     @Test
