@@ -37,11 +37,20 @@ public class Sample4Task {
     @Test
     public void enterNumber() throws Exception {
 //         TODO:
+        WebElement text = driver.findElement(By.id("result_number"));
+        WebElement numberField = driver.findElement(By.name("vfb-9"));
+        WebElement clearResultButton = driver.findElement(By.id("clear_result_button_number"));
+        WebElement resultButton = driver.findElement(By.id("result_button_number"));
 //        enter a number under "Number"
+      numberField.sendKeys("2");
 //        check that button is not clickable "Clear Result"
+        assertFalse(clearResultButton.isEnabled());
 //        check that text is not displayed
+        assertFalse(text.isDisplayed());
 //        click on "Result" button
+        resultButton.click();
 //        check that text is displayed
+        assertTrue(text.isDisplayed());
 //        check that the correct Text appears ("You entered number: "NUMBER YOU ENTERED"")
 //        check that the button "Clear Result" is clickable now
 //        click on "Clear Result"

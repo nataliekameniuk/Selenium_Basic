@@ -39,6 +39,13 @@ public class Sample8Task {
 //         TODO:
 //        check the background of top 2 sections
 //        rgba(255, 221, 221, 1);
+        WebElement section1 = driver.findElement(By.xpath("//div[h2]"));
+        assertEquals("rgba(255, 221, 221, 1)", section1.getCssValue("background-color"));
+     //   /html/body/div[3]/div[2]/div
+        WebElement section2 = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div"));
+        assertEquals("rgba(255, 221, 221, 1)", section2.getCssValue("background-color"));
 //        check h1 element font-size 64px
+        WebElement h1 = driver.findElement(By.xpath("//h1"));
+        assertEquals("64px", h1.getCssValue("font-size"));
     }
 }

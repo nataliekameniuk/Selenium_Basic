@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
@@ -36,21 +37,39 @@ public class Sample5Task {
     @Test
     public void goToAlertedPageViaButton() throws Exception {
 //         TODO:
+        WebElement goToAlertedPage = driver.findElement(By.className("w3-btn"));
 //        click on "To go to alerted page press Ok. Or stay here" button
+        goToAlertedPage.click();
+    //    Thread.sleep(2000);
 //        switch to alert
+        Alert alert = driver.switchTo().alert();
+        System.out.println(alert.getText());
+      //  Thread.sleep(2000);
 //        click ok
+        alert.accept();
+       // Thread.sleep(2000);
 //        switch to second alert
+      Alert alert2 = driver.switchTo().alert();
 //        verify alert text
+        assertEquals("Booo!", alert2.getText());
 //        click ok on second alert
+        alert2.accept();
 //        verify that the correct page is opened
+        assertEquals("This page is alerted", driver.findElement(By.id("heading")).getText());
     }
 
     @Test
     public void doNotGoToAlertedPageViaButton() throws Exception {
 //         TODO:
 //        click on "To go to alerted page press Ok. Or stay here" button
+        WebElement goToAlertedPage = driver.findElement(By.className("w3-btn"));
+        goToAlertedPage.click();
 //        switch to alert
+        Alert alert = driver.switchTo().alert();
+        System.out.println(alert.getText());
 //        click cancel
+        alert.dismiss();
 //        verify the text on page
+        assertEquals("You have dared to deny me!!!", driver.findElement(By.id("textForAlerts")).getText());
     }
 }
