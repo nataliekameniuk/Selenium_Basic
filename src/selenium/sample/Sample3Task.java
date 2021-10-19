@@ -81,7 +81,7 @@ public class Sample3Task {
 //        contain number 190
     //    List<WebElement> allElementsWithClass = driver.findElements(By.className("test"));
     //    for (WebElement elementWithClass : allElementsWithClass){
-        String a = "Test Text 1";
+        String a = "190";
      //   assertTrue(a.equals(allElementsWithClass));}
         List<WebElement> allElementsWithClass = driver.findElements(By.className("test"));
         for (WebElement elementWithClass : allElementsWithClass) {
