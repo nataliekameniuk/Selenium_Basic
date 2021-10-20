@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,6 +18,8 @@ import static org.junit.Assert.assertTrue;
 
 public class Sample9Task {
     WebDriver driver;
+    private static WebDriverWait wait;
+    static long startTime;
 
     @Before
     public void openPage() {
@@ -35,11 +38,22 @@ public class Sample9Task {
     public void loadGreenSleep() throws Exception {
 //         TODO:
 //         * 1) click on start loading green button
+        WebElement greenButton = driver.findElement(By.cssSelector("#start_green"));
+        greenButton.click();
 //         * 2) check that button does not appear,
 //         * but loading text is seen instead   "Loading green..."
+        Thread.sleep(1000);
+        assertTrue(!greenButton.isDisplayed());
+        assertTrue(driver.findElement(By.cssSelector("#loading_green")).isDisplayed());
 //         * 3) check that both button
 //         * and loading text is not seen,
 //         * success is seen instead "Green Loaded"
+        Thread.sleep(10000);
+        assertTrue(!greenButton.isDisplayed());
+        assertTrue(!driver.findElement(By.cssSelector("#loading_green")).isDisplayed());
+        assertTrue(driver.findElement(By.cssSelector("#finish_green")).isDisplayed());
+    //    wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("finish_green")));
+
     }
 
     @Test

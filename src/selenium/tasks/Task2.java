@@ -5,18 +5,23 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+import selenium.pages.FeedbackPage;
+import static org.junit.Assert.*;
 
 import java.io.File;
 
 public class Task2 {
     WebDriver driver;
+    static FeedbackPage feedbackPage;
 
     @Before
     public void openPage() {
         String libWithDriversLocation = System.getProperty("user.dir") + File.separator + "lib" + File.separator;
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver" + new selenium.ChangeToFileExtension().extension());
         driver = new ChromeDriver();
-        driver.get("https://kristinek.github.io/sitetasks/provide_feedback");
+        driver.get("https://kristinek.github.io/site/tasks/provide_feedback");
+        feedbackPage = PageFactory.initElements(driver, FeedbackPage.class);
     }
 
     @After
@@ -27,10 +32,16 @@ public class Task2 {
     @Test
     public void initialFeedbackPage() throws Exception {
 //         TODO:
+
+
 //         check that all field are empty and no tick are clicked
+        feedbackPage.langBoxesDefault();
 //         "Don't know" is selected in "Genre"
+        feedbackPage.radioButtonsGenderDefault();
 //         "Choose your option" in "How do you like us?"
+        feedbackPage.likeUsDefault();
 //         check that the button send is blue with white letters
+        feedbackPage.sendButtonDefault();
     }
 
     @Test
